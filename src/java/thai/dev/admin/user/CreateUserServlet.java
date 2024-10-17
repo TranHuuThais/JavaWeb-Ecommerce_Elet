@@ -1,10 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package thai.dev.admin.user;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,7 +21,6 @@ public class CreateUserServlet extends BaseAdminServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         request.getRequestDispatcher("admin/user/create.jsp").include(request, response);
     }
 
@@ -39,18 +36,33 @@ public class CreateUserServlet extends BaseAdminServlet {
         User user = userDao.find(email);
 
         if (email.isEmpty() || password.isEmpty() || repassword.isEmpty() || role.isEmpty()) {
-            session.setAttribute("error", "vui long dien day du thong tin");
+            session.setAttribute("error", "Vui lòng điền đầy đủ thông tin");
             request.getRequestDispatcher("admin/user/create.jsp").include(request, response);
         } else if (user != null) {
-            session.setAttribute("error", "Email da ton tai");
+            session.setAttribute("error", "Email đã tồn tại");
             request.getRequestDispatcher("admin/user/create.jsp").include(request, response);
         } else if (!password.equals(repassword)) {
-            session.setAttribute("error", "Mat khau khong khop");
+            session.setAttribute("error", "Mật khẩu không khớp");
             request.getRequestDispatcher("admin/user/create.jsp").include(request, response);
         } else {
-            user = new User(email, password, role);
+            String hashedPassword = hashPassword(password);
+            user = new User(email, hashedPassword, role);
             userDao.insert(user);
             response.sendRedirect("IndexUserServlet");
+        }
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] hashedBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password", e);
         }
     }
 }

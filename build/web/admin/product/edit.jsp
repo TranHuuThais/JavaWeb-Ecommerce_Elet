@@ -57,7 +57,7 @@
                                 </c:if>
                                 <c:remove var="error" scope="session"/>
                                 <form action="EditProductServlet" method="post">
-                                     <!--enctype="multipart/form-data"-->
+                                    <!--enctype="multipart/form-data"-->
                                     <input type="hidden" name="productId" value="${product.id}" />
 
                                     <div class="mb-3">
@@ -69,11 +69,11 @@
                                         <label for="productDescription" class="form-label">Description</label>
                                         <textarea name="description" class="form-control" id="productDescription" required>${product.description}</textarea>
                                     </div>
-
                                     <div class="mb-3">
-                                        <label for="productThumbnail" class="form-label">Thumbnail</label>
-                                        <input name="thumbnail" type="text" value="${product.thumbnail}" class="form-control" id="productThumbnail" required>
+                                        <label for="exampleInputThumbnail" class="form-label">Thumbnail</label>
+                                        <input name="thumbnail" type="file" class="form-control" id="exampleInputThumbnail" aria-describedby="thumbnailHelp">
                                     </div>
+
 
                                     <div class="mb-3">
                                         <label for="productPrice" class="form-label">Price</label>

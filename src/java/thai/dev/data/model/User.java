@@ -21,6 +21,10 @@ public class User {
 		this.role = role;
 	}
 
+    public User() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 	public int getId() {
 		return id;
 	}
@@ -52,4 +56,8 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+    public void setName(String name) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

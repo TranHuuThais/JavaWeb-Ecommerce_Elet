@@ -17,30 +17,29 @@ public class ProductImpl implements ProductDao {
 
     Connection con = MySQLDriver.getInstance().getConnection();
 
-   @Override
-public int insert(Product product) {
-    String sql = "INSERT INTO `PRODUCTS`(ID, NAME, DESCRIPTION, THUMBNAIL, PRICE, QUANTITY, CATEGORY_ID) VALUES(NULL, ?, ?, ?, ?, ?, ?)";
-    try (PreparedStatement stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-        stmt.setString(1, product.getName());
-        stmt.setString(2, product.getDescription());
-        stmt.setString(3, product.getThumbnail());
-        stmt.setDouble(4, product.getPrice());
-        stmt.setInt(5, product.getQuantity());
-        stmt.setInt(6, product.getCategoryId());
+    @Override
+    public int insert(Product product) {
+        String sql = "INSERT INTO `PRODUCTS`(ID, NAME, DESCRIPTION, THUMBNAIL, PRICE, QUANTITY, CATEGORY_ID) VALUES(NULL, ?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+            stmt.setString(1, product.getName());
+            stmt.setString(2, product.getDescription());
+            stmt.setString(3, product.getThumbnail());
+            stmt.setDouble(4, product.getPrice());
+            stmt.setInt(5, product.getQuantity());
+            stmt.setInt(6, product.getCategoryId());
 
-        stmt.execute();
+            stmt.execute();
 
-        try (ResultSet rs = stmt.getGeneratedKeys()) {
-            if (rs.next()) {
-                return rs.getInt(1);
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
             }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Use logging instead
         }
-    } catch (SQLException e) {
-        e.printStackTrace(); // Use logging instead
+        return 0;
     }
-    return 0;
-}
-
 
     @Override
     public boolean update(Product product) {
@@ -171,7 +170,7 @@ public int insert(Product product) {
     @Override
     public List<Product> hot(int limit) {
         List<Product> proList = new ArrayList<>();
-        String sql = "SELECT * FROM `PRODUCTS` WHERE VIEW>12 ORDER BY  VIEW DESC LIMIT ?";
+        String sql = "SELECT * FROM `PRODUCTS` WHERE VIEW>=10 ORDER BY  VIEW DESC LIMIT ?";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, limit);
@@ -449,6 +448,8 @@ public int insert(Product product) {
         }
         return 0;
     }
+
+   
 
     @Override
     public List<Product> findByCategory(int id) {

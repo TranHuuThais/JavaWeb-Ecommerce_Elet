@@ -14,11 +14,14 @@ import thai.dev.data.model.User;
 public class UserImpl implements UserDAO {
 
     Connection con = MySQLDriver.getInstance().getConnection();
-
+ 
     // Constructor to initialize connection
-    public UserImpl() {
-        this.con = MySQLDriver.getInstance().getConnection();
-    }
+//     public UserImpl() {
+//        this.con = MySQLDriver.getInstance().getConnection();
+//        if (this.con == null) {
+//            throw new IllegalStateException("Failed to create connection to the database.");
+//        }
+//    }
 
     @Override
     public boolean insert(User user) {

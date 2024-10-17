@@ -41,10 +41,6 @@
         <servlet-class>thai.dev.FilterServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>thai.dev.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>thai.dev.LogoutServlet</servlet-class>
     </servlet>
@@ -71,6 +67,15 @@
     <servlet>
         <servlet-name>CreateUserServlet</servlet-name>
         <servlet-class>thai.dev.admin.user.CreateUserServlet</servlet-class>
+        <multipart-config>
+            <location>/tmp</location>
+            <max-file-size>10485760</max-file-size>
+            <!-- 10MB -->
+            <max-request-size>10485760</max-request-size>
+            <!-- 10MB -->
+            <file-size-threshold>5242880</file-size-threshold>
+            <!-- 5MB -->
+        </multipart-config>
     </servlet>
     <servlet>
         <servlet-name>IndexcategoryServlet</servlet-name>
@@ -101,10 +106,6 @@
         <servlet-class>thai.dev.admin.product.EditProductServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CreateProductServlet</servlet-name>
-        <servlet-class>thai.dev.admin.product.CreateProductServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>DeleteProductServlet</servlet-name>
         <servlet-class>thai.dev.admin.product.DeleteProductServlet</servlet-class>
     </servlet>
@@ -127,6 +128,22 @@
     <servlet>
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>thai.dev.CartServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmOrderServlet</servlet-name>
+        <servlet-class>thai.dev.admin.orderitem.ConfirmOrderServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderStatusServlet</servlet-name>
+        <servlet-class>thai.dev.OrderStatusServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <servlet-class>thai.dev.admin.product.CreateProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>thai.dev.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AboutServlet</servlet-name>
@@ -163,10 +180,6 @@
     <servlet-mapping>
         <servlet-name>FilterServlet</servlet-name>
         <url-pattern>/FilterServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
@@ -225,10 +238,6 @@
         <url-pattern>/EditProductServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CreateProductServlet</servlet-name>
-        <url-pattern>/CreateProductServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>DeleteProductServlet</servlet-name>
         <url-pattern>/DeleteProductServlet</url-pattern>
     </servlet-mapping>
@@ -252,4 +261,32 @@
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmOrderServlet</servlet-name>
+        <url-pattern>/ConfirmOrderServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderStatusServlet</servlet-name>
+        <url-pattern>/OrderStatusServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateProductServlet</servlet-name>
+        <url-pattern>/CreateProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>core</artifactId>
+        <version>3.4.1</version>
+        <!-- Check for the latest version -->
+    </dependency>
+    <dependency>
+        <groupId>com.google.zxing</groupId>
+        <artifactId>javase</artifactId>
+        <version>3.4.1</version>
+        <!-- Check for the latest version -->
+    </dependency>
 </web-app>

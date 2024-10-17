@@ -117,28 +117,23 @@
                                                                                     <div class="card-product overflow-hidden bg_white radius-20 border-line h-100">
                                                                                         <div class="card-product-wrapper">
                                                                                             <a href="ProductServelt?productId=${product.id}" class="product-img">
-                                                                                                <img class="lazyload" data-src="${product.thumbnail}" src="Category" alt="collection-img" style="height: 400px; object-fit: cover; width: 100%;"> <!-- Inline style for fixed height -->
+                                                                                                <img class="lazyload" data-src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" src="Category" alt="collection-img" style="height: 400px; object-fit: cover; width: 100%;">
                                                                                             </a>
                                                                                             <div class="list-product-btn absolute-2">
-
                                                                                                 <a href="ProductServelt?productId=${product.id}" 
                                                                                                    class="box-icon bg_white quickview tf-btn-loading">
-                                                                                                    <span class="icon icon-view"></span>
-                                                                                                    <span class="tooltip">Quick View</span>
+                                                                                                    <span class="fa fa-shopping-cart"></span>
+                                                                                                    <span class="tooltip">Add to cart</span>
                                                                                                 </a>
                                                                                             </div>
                                                                                         </div>
-
-                                                                                        <div class="card-product-info has-padding">
-                                                                                            <a href="product-detail.html" class="title link">${product.name}</a>
-                                                                                            <span class="price">${product.price}</span>
+                                                                                        <div class="card-product-info has-padding text-center"> <!-- Added 'text-center' class here -->
+                                                                                            <a href="ProductServelt?productId=${product.id}" class="title link">${product.name}</a>
+                                                                                            <span class="price" style="color: red">$ ${product.price}</span>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </c:forEach>
-
-
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -293,35 +288,7 @@
                                                             </div>
                                                         </section>
                                                         <!-- /Collection -->
-                                                        <!-- Shop Collection -->
-                                                        <section class="flat-spacing-8 pb_0">
-                                                            <div class="container">
-                                                                <div class="tf-grid-layout gap-0 md-col-2 bg_primary tf-img-with-text style-5">
-                                                                    <div class="tf-image-wrap wow fadeInUp" data-wow-delay="0s">
-                                                                        <img class="lazyload" data-src="./assets/images/collections/collection-72.jpg"
-                                                                             src="./assets/images/collections/collection-72.jpg" alt="collection-img">
-                                                                    </div>
-                                                                    <div class="tf-content-wrap wow fadeInUp" data-wow-delay="0s">
-                                                                        <div class="sub-heading fw-7">ULTIMATE APPLE ACCESSORY.</div>
-                                                                        <div class="heading">60% Discount</div>
-                                                                        <p class="description text_black-2">Find the latest and greatest gadgets to enhance your
-                                                                            electronic devices.
 
-                                                                        </p>
-                                                                        <div class="count-down">
-                                                                            <div class="description"><strong>Hungry up ! </strong>Deals end in :</div>
-                                                                            <div class="tf-countdown-v2">
-                                                                                <div class="js-countdown" data-timer="8007500"
-                                                                                     data-labels="Days,Hours,Mins,Secs"></div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <a href="shop-collection-list.html"
-                                                                           class="tf-btn style-2 btn-fill rounded-full animate-hover-btn">Shop Now</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </section>
-                                                        <!-- /Shop Collection -->
 
                                                         <!-- Look book -->
                                                         <section class="flat-spacing-16">
@@ -359,39 +326,28 @@
                                                                                     data-space-lg="30"
                                                                                     data-space-md="15"
                                                                                     >
-
                                                                                     <div class="swiper-wrapper">
                                                                                         <c:forEach items="${newsProductList}" var="product">
-
                                                                                             <div class="swiper-slide" lazy="true">
                                                                                                 <div class="card-product">
                                                                                                     <div class="card-product-wrapper">
                                                                                                         <a href="ProductServelt?productId=${product.id}" class="product-img">
-                                                                                                            <img
-                                                                                                                class="lazyload img-product"
-                                                                                                                data-src="${product.thumbnail}"
-                                                                                                                src="${product.thumbnail}"
-                                                                                                                alt="image-product"
-                                                                                                                />
-
+                                                                                                            <img class="lazyload" data-src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" src="Category" alt="collection-img" style="height: 250px; object-fit: cover; width: 100%;">
                                                                                                         </a>
                                                                                                         <div class="list-product-btn absolute-2">
                                                                                                             <a href="ProductServelt?productId=${product.id}" 
                                                                                                                class="box-icon bg_white quickview tf-btn-loading">
-                                                                                                                <span class="icon icon-view"></span>
-                                                                                                                <span class="tooltip">Quick View</span>
+                                                                                                                <span class="fa fa-shopping-cart"></span>
+                                                                                                                <span class="tooltip">Add to cart</span>
                                                                                                             </a>
                                                                                                         </div>
                                                                                                     </div>
-                                                                                                    <div class="card-product-info">
-                                                                                                        <a href="product-detail.html" class="title link"
-                                                                                                           >${product.name}</a
-                                                                                                        >
-                                                                                                        <span class="price">From $${product.price}</span>
+                                                                                                    <div class="card-product-info text-center"> <!-- Added 'text-center' class here -->
+                                                                                                        <a href="ProductServelt?productId=${product.id}" class="title link">${product.name}</a>
+                                                                                                        <span class="price" style="color: red; margin-top: 5px;">$ ${product.price}</span> <!-- Added margin for spacing -->
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
-
                                                                                         </c:forEach>
                                                                                     </div>
                                                                                     <div

@@ -75,7 +75,7 @@
                         <div class="footer-infor">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="./assets/images/logo/logo-white.svg" alt="Ecomus Store Logo">
+                                    <img src="./assets/images/logo/elet.png" alt="Elet Store Logo">
                                 </a>
                             </div>
                             <ul>
@@ -100,9 +100,7 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6 col-12 footer-col-block">
-                        <div class="footer-heading footer-heading-desktop">
-                            <h6>Help</h6>
-                        </div>
+                       
                         <div class="footer-heading footer-heading-mobile">
                             <h6>Help</h6>
                         </div>
@@ -117,9 +115,7 @@
                         </ul>
                     </div>
                     <div class="col-xl-3 col-md-6 col-12 footer-col-block">
-                        <div class="footer-heading footer-heading-desktop">
-                            <h6>About Us</h6>
-                        </div>
+                       
                         <div class="footer-heading footer-heading-mobile">
                             <h6>About Us</h6>
                         </div>
@@ -132,9 +128,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 col-12">
                         <div class="footer-newsletter footer-col-block">
-                            <div class="footer-heading footer-heading-desktop">
-                                <h6>Sign Up for Email</h6>
-                            </div>
+                            
                             <div class="footer-heading footer-heading-mobile">
                                 <h6>Sign Up for Email</h6>
                             </div>
@@ -180,7 +174,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright text-center">
-                            <div class="content">© 2024 <a href="index.html">Ecomus Store</a>. All Rights Reserved</div>
+                            <div class="content">© 2024 <a href="index.html">Elet Store</a>. All Rights Reserved</div>
                         </div>
                     </div>
                 </div>

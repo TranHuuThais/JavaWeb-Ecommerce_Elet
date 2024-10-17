@@ -16,7 +16,7 @@ public class Product {
     private int categoryId;
     private Timestamp createdAt;
 
-    public Product(String name, String description, String thumbnail, double price, int quantity, int categoryId) {
+    public Product(int quantity, String description, String thumbnail, String name, double price, int categoryId) {
         this.name = name;
         this.description = description;
         this.thumbnail = thumbnail;
@@ -119,13 +119,13 @@ public class Product {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
-public List<OrderItem> getOrderItems() {
-   
-    return DatabaseDao.getInstance().getOrderItemDao().findByProductId(this.id);
-}
-    public Category getCategory(){
+
+    public List<OrderItem> getOrderItems() {
+
+        return DatabaseDao.getInstance().getOrderItemDao().findByProductId(this.id);
+    }
+
+    public Category getCategory() {
         return DatabaseDao.getInstance().getCategoryDao().find(this.categoryId);
     }
 }
-
- 

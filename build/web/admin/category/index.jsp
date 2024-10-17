@@ -97,6 +97,33 @@
                                             </c:forEach>
                                         </tbody>
                                     </table>
+                                    <section id="pagination" class="section-p1">
+                                        <c:if test="${totalPages > 1}">
+                                            <nav aria-label="Page navigation">
+                                                <ul class="pagination justify-content-center">
+                                                    <c:if test="${currentPage > 1}">
+                                                        <li class="page-item">
+                                                            <a href="IndexCategoryServlet?page=${currentPage - 1}" class="page-link" aria-label="Previous">
+                                                                <span aria-hidden="true">&laquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </c:if>
+                                                    <c:forEach var="i" begin="1" end="${totalPages}">
+                                                        <li class="page-item ${currentPage == i ? 'active' : ''}">
+                                                            <a href="IndexCategoryServlet?page=${i}" class="page-link">${i}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                    <c:if test="${currentPage < totalPages}">
+                                                        <li class="page-item">
+                                                            <a href="IndexCategoryServlet?page=${currentPage + 1}" class="page-link" aria-label="Next">
+                                                                <span aria-hidden="true">&raquo;</span>
+                                                            </a>
+                                                        </li>
+                                                    </c:if>
+                                                </ul>
+                                            </nav>
+                                        </c:if>
+                                    </section>
                                 </div>
                             </div>
                         </div>

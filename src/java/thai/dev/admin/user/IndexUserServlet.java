@@ -42,6 +42,5 @@ public class IndexUserServlet extends BaseAdminServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Handle post requests if necessary
     }
 }

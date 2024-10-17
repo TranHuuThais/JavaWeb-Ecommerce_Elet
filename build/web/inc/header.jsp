@@ -1,6 +1,6 @@
 <%-- 
     Document   : header
-    Created on : Aug 23, 2024, 11:48:10 AM
+    Created on : Aug 23, 2024, 11:48:10 AM
     Author     : ACER
 --%>
 
@@ -8,7 +8,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <!-- Header -->
     <header id="header" class="header-default">
         <div class="px_15 lg-px_40">
@@ -22,7 +21,7 @@
                 </div>
                 <div class="col-xl-3 col-md-4 col-6">
                     <a href="HomeServlet" class="logo-header">
-                        <img src="./assets/images/logo/logo@2x.png" alt="logo" class="logo">
+                        <img src="./assets/images/logo/elet.png" alt="logo" class="logo">
                     </a>
                 </div>
                 <div class="col-xl-6 tf-md-hidden">
@@ -30,13 +29,11 @@
                         <ul class="box-nav-ul d-flex align-items-center justify-content-center gap-30">
                             <li class="menu-item">
                                 <a href="HomeServlet" class="item-link">Home<i class=""></i></a>
-
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="javascript:void(0);" class="nav-link dropdown-toggle" style="font-weight: 500; font-size: 15px;" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="window.location.href = 'ShopServlet';">
                                     Shop <i class="bi bi-chevron-down"></i>
                                 </a>
-
                                 <ul class="dropdown-menu" aria-labelledby="shopDropdown">
                                     <c:forEach items="${categoryList}" var="category">
                                         <li>
@@ -47,16 +44,20 @@
                                     </c:forEach>
                                 </ul>
                             </li>
-
-
+                            <li class="menu-item position-relative">
+                                <a href="OrderStatusServlet" class="item-link">Order Status<i class=""></i></a> <!-- New Order Status Link -->
+                            </li>
                             <li class="menu-item position-relative">
                                 <a href="#" class="item-link">Pages<i class=""></i></a>
-
                             </li>
                             <li class="menu-item position-relative">
                                 <a href="CartServlet" class="item-link">Cart<i class="i"></i></a>
-
                             </li>
+                            <c:if test="${sessionScope.user != null && sessionScope.user.role == 'admin'}">
+                                <li class="menu-item position-relative">
+                                    <a href="DashboardServlet" class="item-link">Admin<i class=""></i></a>
+                                </li>
+                            </c:if>
                         </ul>
                     </nav>
                 </div>
@@ -71,6 +72,16 @@
                             </form>
                         </li>
 
+                        <!-- Notification Icon -->
+                        <li class="nav-notification position-relative">
+                            <a href="#" class="position-relative">
+                                <i class="fas fa-bell"></i>
+                                <!-- Optional: Badge for unread notifications -->
+                                <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+                                    <span class="visually-hidden">New alerts</span>
+                                </span>
+                            </a>
+                        </li>
                         <li class="nav-account">
                             <c:if test="${sessionScope.user == null}">
                                 <a href="<%= request.getContextPath()%>/LoginServlet">
@@ -83,12 +94,9 @@
                                 </a>
                             </c:if>
                         </li>
-
-
                     </ul>
                 </div>
             </div>
         </div>
     </header>
     <!-- /Header -->
-

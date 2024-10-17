@@ -29,6 +29,9 @@ public class OrderItem {
 
     // Getters và setters cho các thuộc tính
 
+
+   
+
     public int getId() {
         return id;
     }

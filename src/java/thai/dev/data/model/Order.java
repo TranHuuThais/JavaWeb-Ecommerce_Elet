@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Order {
 
+    private List<Product> products;
     private int id;
     private String code;
     private String status;
@@ -43,6 +44,15 @@ public class Order {
         return code;
     }
 
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setOrderItems(List<Product> products) {
+        this.products = products;
+        
+    }
+
     public void setCode(String code) {
         this.code = code;
     }
@@ -70,11 +80,15 @@ public class Order {
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
-    public List<OrderItem> getOrderItems() {
-    return DatabaseDao.getInstance().getOrderItemDao().findByOrderId(this.id);
-}
-    
-    public User getUser(){
-          return DatabaseDao.getInstance().getUserDao().find(this.userId);
+
+//    public List<OrderItem> getOrderItems() {
+//        return DatabaseDao.getInstance().getOrderItemDao().findByOrderId(this.id);
+//    }
+    public User getUser() {
+        return DatabaseDao.getInstance().getUserDao().find(this.userId);
+    }
+
+    public void setProducts(List<Product> products) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

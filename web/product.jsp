@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="single-pro-img">
-                            <img src="${product.thumbnail}" alt="${product.name}" id="MainImg" width="100%">
+                            <img src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" alt="${product.name}" id="MainImg" width="100%">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -49,20 +49,7 @@
                                     <div class="tf-product-info-price">
                                         <div class="price-on-sale">$${product.price}</div>
                                     </div>
-                                    <div class="tf-product-info-variant-picker">
-                                        <div class="variant-picker-item">
-                                            <div class="variant-picker-values">
-                                                <input type="radio" name="size1" id="values-s" checked>
-                                                <label class="style-text" for="values-s" data-value="S"><p>S</p></label>
-                                                <input type="radio" name="size1" id="values-m">
-                                                <label class="style-text" for="values-m" data-value="M"><p>M</p></label>
-                                                <input type="radio" name="size1" id="values-l">
-                                                <label class="style-text" for="values-l" data-value="L"><p>L</p></label>
-                                                <input type="radio" name="size1" id="values-xl">
-                                                <label class="style-text" for="values-xl" data-value="XL"><p>XL</p></label>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="tf-product-info-quantity">
                                         <div class="quantity-title fw-6">Quantity</div>
                                         <div class="wg-quantity">
@@ -75,11 +62,7 @@
                                         <button type="submit" class="tf-btn btn-fill justify-content-center fw-6 fs-16 flex-grow-1 animate-hover-btn">
                                             <span>Add to cart</span>
                                         </button>
-                                        <a href="javascript:void(0);" class="tf-product-btn-wishlist hover-tooltip box-icon bg_white wishlist btn-icon-action">
-                                            <span class="icon icon-heart"></span>
-                                            <span class="tooltip">Add to Wishlist</span>
-                                            <span class="icon icon-delete"></span>
-                                        </a>
+
                                         <a href="#compare" data-bs-toggle="offcanvas" aria-controls="offcanvasLeft" class="tf-product-btn-wishlist hover-tooltip box-icon bg_white compare btn-icon-action">
                                             <span class="icon icon-compare"></span>
                                             <span class="tooltip">Add to Compare</span>
@@ -92,10 +75,15 @@
                             <a href="#" class="btns-full">Buy with <img src="./assets/images/payments/paypal.png" alt="PayPal"></a>
                             <a href="#" class="payment-more-option">More payment options</a>
                         </div>
+                        <div class="text-center">
+                            <c:if test="${not empty qrCodeImage}">
+                                <img src="data:image/png;base64,${qrCodeImage}" alt="QR Code" class="img-fluid rounded" style="max-width: 200px;" />
+                            </c:if>
+                        </div>
                         <div class="tf-pickup-availability">
                             <div>
                                 <svg width="18" height="18" viewBox="0 0 18 18" class="mt_3">
-                                    <path d="M7.6 13.2L14.65 6.15L13.25 4.75L7.6 10.4L4.75 7.55L3.35 8.95L7.6 13.2ZM0 18V0H18V18H0ZM2 16H16V2H2V16Z" fill="#428445"></path>
+                                <path d="M7.6 13.2L14.65 6.15L13.25 4.75L7.6 10.4L4.75 7.55L3.35 8.95L7.6 13.2ZM0 18V0H18V18H0ZM2 16H16V2H2V16Z" fill="#428445"></path>
                                 </svg>
                             </div>
                             <div>
@@ -103,7 +91,7 @@
                                 <a href="#pickup_available" data-bs-toggle="modal">Check availability at other stores</a>
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -124,19 +112,19 @@
                                 <div class="swiper-slide" lazy="true">
                                     <div class="card-product">
                                         <div class="card-product-wrapper">
-                                            <img class="lazyload" src="${product.thumbnail}" alt="${product.name}">
+                                            <img class="lazyload" src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" alt="${product.name}">
                                             <span class="box-icon">
                                                 <i class="icon-icon icon-arrow1-top-left"></i>
                                             </span>
                                             <div class="list-product-btn">
-                                             
+
                                                 <a href="#quick_view" data-bs-toggle="modal"
                                                    class="box-icon bg_white quickview tf-btn-loading">
                                                     <span class="icon icon-view"></span>
                                                     <span class="tooltip">Quick View</span>
                                                 </a>
                                             </div>
-                                           
+
                                         </div>
                                         <div class="card-product-info">
                                             <a href="product-detail.jsp" class="title link">${product.name}</a>

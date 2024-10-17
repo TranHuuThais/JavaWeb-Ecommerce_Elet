@@ -83,7 +83,7 @@
                                                 <tr>
                                                     <th scope="row">${i}</th>
                                                     <td>
-                                                        <img src="${product.thumbnail}" alt="Product Thumbnail" style="width: 50px; height: 50px; object-fit: cover;" />
+                                                        <img src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" alt="${product.name}" style="width: 100px; height: auto;">
                                                     </td>
                                                     <td> ${product.name}</td>
                                                     <td>${product.price}</td>

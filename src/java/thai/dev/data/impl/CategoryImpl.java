@@ -9,6 +9,7 @@ import java.util.List;
 import thai.dev.data.dao.CategoryDao;
 import thai.dev.data.driver.MySQLDriver;
 import thai.dev.data.model.Category;
+import thai.dev.data.model.User;
 
 public class CategoryImpl implements CategoryDao {
 
@@ -126,6 +127,43 @@ public class CategoryImpl implements CategoryDao {
             }
         } catch (SQLException e) {
             // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return cateList;
+    }
+// New method to count total users
+
+    @Override
+    public int countAll() {
+        int count = 0;
+        String sql = "SELECT COUNT(*) FROM `CATEGORIES`";
+        try (PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    @Override
+    public List<Category> findPaginated(int page, int pageSize) {
+        List<Category> cateList = new ArrayList<>();
+        int offset = (page - 1) * pageSize;
+        String sql = "SELECT * FROM `CATEGORIES` LIMIT ? OFFSET ?";
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, pageSize);
+            stmt.setInt(2, offset);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    String thumbnail = rs.getString("thumbnail");
+                    cateList.add(new Category(id, name, thumbnail));
+                }
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return cateList;

@@ -5,9 +5,7 @@
 package thai.dev;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -48,21 +46,24 @@ public class CheckoutServlet extends BaseServlet {
 
     }
 
+         
+
     private void processCheckout(HttpServletRequest request, User user) {
         OrderDao orderDao = DatabaseDao.getInstance().getOrderDao();
         String code = StringHelper.randomString(10);
-        Order order = new Order(code, "pending", user.getId());
+        Order order = new Order(code, Order.PENDING, user.getId());
         orderDao.insert(order);
 
+        // Find the order by code to retrieve the newly created order
         order = orderDao.findByCode(code);
         HttpSession session = request.getSession();
 
         List<OrderItem> cart = (List<OrderItem>) session.getAttribute("cart");
         OrderItemDao orderItemDao = DatabaseDao.getInstance().getOrderItemDao();
         if (cart != null) {
-            for (OrderItem orderitem : cart) {
-                orderitem.setOrderId(order.getId());
-                orderItemDao.insert(orderitem);
+            for (OrderItem orderItem : cart) {
+                orderItem.setOrderId(order.getId());
+                orderItemDao.insert(orderItem);
             }
         }
         session.setAttribute("message", "Checkout Success");

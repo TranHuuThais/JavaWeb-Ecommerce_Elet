@@ -9,7 +9,7 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
-        <a href="dashboard.jsp" class="navbar-brand mx-4 mb-3">
+        <a href="DashboardServlet" class="navbar-brand mx-4 mb-3">
             <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
@@ -23,10 +23,10 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+            <a href="DashboardServlet" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
             <div class="nav-item dropdown">
                 <a href="IndexUserServlet" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-tags me-2"></i>User</a>
-                  <div class="dropdown-menu bg-transparent border-0">
+                <div class="dropdown-menu bg-transparent border-0">
                     <a href="IndexUserServlet" class="dropdown-item">
                         <i class="fa fa-list me-2"></i>All
                     </a>
@@ -37,7 +37,7 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="IndexCategoryServlet" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-tags me-2"></i>Categories</a>
-                  <div class="dropdown-menu bg-transparent border-0">
+                <div class="dropdown-menu bg-transparent border-0">
                     <a href="IndexCategoryServlet" class="dropdown-item">
                         <i class="fa fa-list me-2"></i>All
                     </a>
@@ -48,7 +48,7 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-box me-2"></i>Products</a>
-                  <div class="dropdown-menu bg-transparent border-0">
+                <div class="dropdown-menu bg-transparent border-0">
                     <a href="IndexProductServlet" class="dropdown-item">
                         <i class="fa fa-list me-2"></i>All
                     </a>
@@ -59,25 +59,17 @@
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-shopping-cart me-2"></i>Orders</a>
-                 <div class="dropdown-menu bg-transparent border-0">
+                <div class="dropdown-menu bg-transparent border-0">
                     <a href="IndexOrderServlet" class="dropdown-item">
                         <i class="fa fa-list me-2"></i>All
                     </a>
-                   
-                </div>
-            </div>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <i class="fa fa-shopping-cart me-2"></i>OrderItems
-                </a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="IndexOrderItemServlet" class="dropdown-item">
-                        <i class="fa fa-list me-2"></i>All
-                    </a>
-                   
                 </div>
             </div>
 
+            <!-- Home Button -->
+            <div class="nav-item" style="margin-top: 120%">        
+                <a href="HomeServlet" class="nav-link"><i class="fa fa-home me-2"></i>Back Home</a>
+            </div>
         </div>
     </nav>
 </div>
