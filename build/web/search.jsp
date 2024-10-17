@@ -122,8 +122,8 @@
                     <div class="card-product">
                         <div class="card-product-wrapper">
                             <a href="product-detail.html" class="product-img">
-                                <img style="height: 400px; object-fit: cover; width: 90%;"class="lazyload img-product" data-src="${product.thumbnail}" src="${product.thumbnail}" alt="image-product">
-                                <img style="height: 400px; object-fit: cover; width: 90%;"class="lazyload img-hover" data-src="${product.thumbnail}" src="${product.thumbnail}" alt="image-product">
+                                <img style="height: 400px; object-fit: cover; width: 90%;"class="lazyload img-product" data-src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" src="${product.thumbnail}" alt="image-product">
+                                <img style="height: 400px; object-fit: cover; width: 90%;"class="lazyload img-hover" data-src="${pageContext.request.contextPath}/uploads/${product.thumbnail}" src="${product.thumbnail}" alt="image-product">
                             </a>
                             
                         </div>

@@ -62,20 +62,17 @@
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <c:forEach items="${cart}" var="orderItem">
-
                                                                                         <tr class="tf-cart-item file-delete">
                                                                                             <td class="tf-cart-item_product">
                                                                                                 <form action="CartServlet" method="post" style="display:inline;">
                                                                                                     <input type="hidden" name="action" value="delete">
                                                                                                         <input type="hidden" name="productId" value="${orderItem.productId}">
-                                                                                                            <button type="submit" class="fa-regular fa-circle-xmark" style="border: solid white"></button>
                                                                                                             </form>
-                                                                                                            <c:set var="basePath" value="${pageContext.request.contextPath}/uploads/" />
 
+                                                                                                            <c:set var="basePath" value="${pageContext.request.contextPath}/uploads/" />
                                                                                                             <a href="product-detail.html" class="img-box">
                                                                                                                 <img src="${basePath}${orderItem.product.thumbnail}" alt="img-product">
                                                                                                             </a>
-
 
                                                                                                             <div class="cart-info">
                                                                                                                 <a href="" class="cart-title link">${orderItem.product.name}</a>
@@ -88,7 +85,6 @@
                                                                                                                             </button>
                                                                                                                             </form>
                                                                                                                             </div>
-
                                                                                                                             </td>
                                                                                                                             <td class="tf-cart-item_price" cart-data-title="Price">
                                                                                                                                 <div class="cart-price">$${orderItem.product.price}</div>
@@ -105,6 +101,7 @@
                                                                                                                                                 </td>
                                                                                                                                                 </tr>
                                                                                                                                             </c:forEach>
+
                                                                                                                                             </tbody>
                                                                                                                                             </table>
                                                                                                                                             <div class="tf-page-cart-note">

@@ -81,10 +81,7 @@
 
                         <form id="register-form" action="RegisterServlet" method="post" accept-charset="utf-8" data-mailchimp="true">
                             <!-- Username -->
-                            <div class="mb-3 position-relative">
-                                <input type="text" name="username" class="form-control" placeholder="Username" required />
-                                <i class="fa-solid fa-user position-absolute top-50 end-0 translate-middle-y me-3"></i>
-                            </div>
+                          
                             <!-- Email -->
                             <div class="mb-3 position-relative">
                                 <input type="email" name="email" class="form-control" placeholder="Email" required />

@@ -27,4 +27,6 @@ public interface UserDAO {
     public int countAll();
 
     public List<User> findPaginated(int page, int pageSize);
+
+    public User findByConfirmationCode(String confirmationCode);
 }

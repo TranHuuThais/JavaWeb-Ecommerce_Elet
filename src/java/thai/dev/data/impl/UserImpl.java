@@ -14,7 +14,7 @@ import thai.dev.data.model.User;
 public class UserImpl implements UserDAO {
 
     Connection con = MySQLDriver.getInstance().getConnection();
- 
+
     // Constructor to initialize connection
 //     public UserImpl() {
 //        this.con = MySQLDriver.getInstance().getConnection();
@@ -22,14 +22,15 @@ public class UserImpl implements UserDAO {
 //            throw new IllegalStateException("Failed to create connection to the database.");
 //        }
 //    }
-
     @Override
     public boolean insert(User user) {
-        String sql = "INSERT INTO `USER` (EMAIL, PASSWORD, ROLE) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO `USER` (EMAIL, PASSWORD, ROLE,confirmationCode, isConfirmed) VALUES (?, ?, ?,?,?)";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getRole());
+            stmt.setString(4, user.getConfirmationCode());
+            stmt.setBoolean(5, user.isConfirmed());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -38,14 +39,31 @@ public class UserImpl implements UserDAO {
         return false;
     }
 
+//    @Override
+//    public boolean update(User user) {
+//        String sql = "UPDATE `USER` SET EMAIL = ?, PASSWORD = ?, ROLE = ?,isConfirmed = ? WHERE ID = ?";
+//        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+//            stmt.setString(1, user.getEmail());
+//            stmt.setString(2, user.getPassword());
+//            stmt.setString(3, user.getRole());
+//            stmt.setInt(4, user.getId());
+//            stmt.setBoolean(5, user.isConfirmed());
+//            stmt.executeUpdate();
+//            return true;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+//    }
     @Override
     public boolean update(User user) {
-        String sql = "UPDATE `USER` SET EMAIL = ?, PASSWORD = ?, ROLE = ? WHERE ID = ?";
+        String sql = "UPDATE `USER` SET EMAIL = ?, PASSWORD = ?, ROLE = ?,isConfirmed = ? WHERE ID = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getRole());
-            stmt.setInt(4, user.getId());
+            stmt.setBoolean(4, user.isConfirmed()); // This should be at position 4
+            stmt.setInt(5, user.getId()); // This should be at position 5
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -77,7 +95,9 @@ public class UserImpl implements UserDAO {
                     String email = rs.getString("email");
                     String password = rs.getString("password");
                     String role = rs.getString("role");
-                    return new User(id, email, password, role);
+                    String confirmationCode = rs.getString("confirmationCode");
+                    int isConfirmed = rs.getInt("isConfirmed");
+                    return new User(id, email, password, role, confirmationCode, true);
                 }
             }
         } catch (SQLException e) {
@@ -96,7 +116,9 @@ public class UserImpl implements UserDAO {
                 String email = rs.getString("email");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                users.add(new User(id, email, password, role));
+                String confirmationCode = rs.getString("confirmationCode");
+                int isConfirmed = rs.getInt("isConfirmed");
+                users.add(new User(id, email, password, role, confirmationCode, true));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,23 +126,24 @@ public class UserImpl implements UserDAO {
         return users;
     }
 
-    @Override
     public User find(String email, String password) {
         String sql = "SELECT * FROM `USER` WHERE EMAIL = ? AND PASSWORD = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, email);
-            stmt.setString(2, password);
+            stmt.setString(2, password); // Use the hashed password here
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     int id = rs.getInt("id");
                     String role = rs.getString("role");
-                    return new User(id, email, password, role);
+                    String confirmationCode = rs.getString("confirmationCode");
+                    int isConfirmed = rs.getInt("isConfirmed");
+                    return new User(id, email, password, role, confirmationCode, true);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return null; // If the user is not found
     }
 
     @Override
@@ -133,7 +156,9 @@ public class UserImpl implements UserDAO {
                     int id = rs.getInt("id");
                     String password = rs.getString("password");
                     String role = rs.getString("role");
-                    return new User(id, email, password, role);
+                    String confirmationCode = rs.getString("confirmationCode");
+                    int isConfirmed = rs.getInt("isConfirmed");
+                    return new User(id, email, password, role, confirmationCode, true);
                 }
             }
         } catch (SQLException e) {
@@ -170,7 +195,9 @@ public class UserImpl implements UserDAO {
                     String email = rs.getString("email");
                     String password = rs.getString("password");
                     String role = rs.getString("role");
-                    users.add(new User(id, email, password, role));
+                    String confirmationCode = rs.getString("confirmationCode");
+                    int isConfirmed = rs.getInt("isConfirmed");
+                    users.add(new User(id, email, password, role, confirmationCode, true));
                 }
             }
         } catch (SQLException e) {
@@ -178,4 +205,23 @@ public class UserImpl implements UserDAO {
         }
         return users;
     }
+
+//  @Override
+    public User findByConfirmationCode(String confirmationCode) {
+        User user = null;
+        String sql = "SELECT * FROM `USER` WHERE confirmationCode = ?";
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1, confirmationCode);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    user = new User(rs.getInt("id"), rs.getString("email"), rs.getString("password"),
+                            rs.getString("role"), rs.getString("confirmationCode"), rs.getBoolean("isConfirmed"));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
 }

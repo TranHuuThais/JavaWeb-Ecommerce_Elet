@@ -59,7 +59,9 @@ public class LoginServlet extends BaseServlet {
         String password = request.getParameter("password");
 
         UserDAO userDAO = DatabaseDao.getInstance().getUserDao();
-        User user = userDAO.find(email, password);
+        // Hash the password before checking it
+        String hashedPassword = hashPassword(password);
+        User user = userDAO.find(email, hashedPassword); // Use hashedPassword here
 
         if (user == null) {
             redirectWithError(session, response, "Login Failed");

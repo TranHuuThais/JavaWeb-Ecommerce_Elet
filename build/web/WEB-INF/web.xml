@@ -145,6 +145,14 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>thai.dev.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>verificationToken</servlet-name>
+        <servlet-class>thai.dev.verificationToken</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmCodeServlet</servlet-name>
+        <servlet-class>thai.dev.ConfirmCodeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AboutServlet</servlet-name>
         <url-pattern>/AboutServlet</url-pattern>
@@ -289,4 +297,12 @@
         <version>3.4.1</version>
         <!-- Check for the latest version -->
     </dependency>
+    <servlet-mapping>
+        <servlet-name>verificationToken</servlet-name>
+        <url-pattern>/verificationToken</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmCodeServlet</servlet-name>
+        <url-pattern>/ConfirmCodeServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
