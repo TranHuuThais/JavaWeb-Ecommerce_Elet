@@ -62,8 +62,8 @@ public class UserImpl implements UserDAO {
             stmt.setString(1, user.getEmail());
             stmt.setString(2, user.getPassword());
             stmt.setString(3, user.getRole());
-            stmt.setBoolean(4, user.isConfirmed()); // This should be at position 4
-            stmt.setInt(5, user.getId()); // This should be at position 5
+            stmt.setBoolean(4, user.isConfirmed()); 
+            stmt.setInt(5, user.getId()); 
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {

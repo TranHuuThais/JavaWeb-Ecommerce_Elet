@@ -33,7 +33,7 @@ public class ConfirmCodeServlet extends BaseServlet {
                 session.setAttribute("success", "Xác nhận email thành công! Bạn có thể đăng nhập.");
                 System.out.println("Confirmation successful, redirecting to LoginServlet...");
                 response.sendRedirect("LoginServlet");
-                return; // Ensure to return after redirect
+                return; 
             } else {
                 System.out.println("Invalid confirmation code.");
             }

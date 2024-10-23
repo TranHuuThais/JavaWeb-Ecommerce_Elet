@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/src/java/thai/dev/data/impl/OrderItemImpl.java</file>
-            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/src/java/thai/dev/data/model/OrderItem.java</file>
-            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/src/java/thai/dev/CartServlet.java</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/product.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/src/java/thai/dev/data/model/User.java</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/inc/header.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/register.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/search.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/shop.jsp</file>
             <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/cart.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/home.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/login.jsp</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/src/java/thai/dev/LoginServlet.java</file>
+            <file>file:/C:/Users/ACER/OneDrive%20-%20Hue%20Industrial%20College/Documents/NetBeansProjects/Elet/web/category.jsp</file>
         </group>
     </open-files>
 </project-private>

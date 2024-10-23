@@ -30,7 +30,7 @@ public class OrderStatusServlet extends BaseServlet {
 
         request.setAttribute("orderList", orderList);
         System.out.println("order.product");
-        // Forward the request to the order status JSP page
+       
         request.getRequestDispatcher("/orderStatus.jsp").forward(request, response);
     }
 

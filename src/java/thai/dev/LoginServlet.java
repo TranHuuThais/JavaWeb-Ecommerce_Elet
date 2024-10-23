@@ -59,16 +59,25 @@ public class LoginServlet extends BaseServlet {
         String password = request.getParameter("password");
 
         UserDAO userDAO = DatabaseDao.getInstance().getUserDao();
-        // Hash the password before checking it
+        
         String hashedPassword = hashPassword(password);
-        User user = userDAO.find(email, hashedPassword); // Use hashedPassword here
+        User user = userDAO.find(email, hashedPassword); 
 
         if (user == null) {
-            redirectWithError(session, response, "Login Failed");
-        } else {
-            setUserSession(session, user);
-            redirectToHomeOrDashboard(response, user);
+            session.setAttribute("error", "Tài khoản hoặc mật khẩu không chính xác.");
+            response.sendRedirect("login.jsp");
+            return;
         }
+
+        if (!user.isConfirmed()) {
+            session.setAttribute("error", "Email của bạn chưa được xác minh. Vui lòng kiểm tra hộp thư đến.");
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        // If user is confirmed, set the session and redirect
+        setUserSession(session, user);
+        redirectToHomeOrDashboard(response, user);
     }
 
     private User createUser(UserDAO userDAO, String email) {

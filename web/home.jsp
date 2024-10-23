@@ -366,9 +366,9 @@
                                                         </section>
                                                         <!-- /Look book -->
 
+                                                    </div>
 
                                                         <%@include file="inc/footer.jsp" %>
-                                                    </div>
 
 
 

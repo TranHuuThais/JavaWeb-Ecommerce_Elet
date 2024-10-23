@@ -52,14 +52,12 @@ public class RegisterServlet extends BaseServlet {
         } else {
             // Hash the password using MD5
             String hashedPassword = hashPassword(password);
-            String confirmationCode = generateConfirmationCode(); // Generate a confirmation code
+            String confirmationCode = generateConfirmationCode(); 
             user = new User(email, hashedPassword, "user", confirmationCode, false);
-            userDAO.insert(user); // Save user to the database
-
-            // Send confirmation email
+            userDAO.insert(user); 
+        
             sendConfirmationEmail(email, confirmationCode);
 
-            // Store the email in session for confirmation page
             session.setAttribute("email", email);
             session.setAttribute("confirmationCode", confirmationCode);
             session.setAttribute("waitingForConfirmation", true);
@@ -67,7 +65,7 @@ public class RegisterServlet extends BaseServlet {
         }
     }
 
-    // Method to hash the password using MD5
+    //  MD5
     private String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -83,7 +81,7 @@ public class RegisterServlet extends BaseServlet {
         }
     }
 
-    // Email format validation
+   
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
@@ -91,9 +89,8 @@ public class RegisterServlet extends BaseServlet {
         return matcher.matches();
     }
 
-// Password complexity validation
+
     private boolean isValidPassword(String password) {
-        // Regex checks for at least 8 characters, at least one uppercase letter
         String passwordRegex = "^(?=.*[A-Z]).{8,}$";
         Pattern pattern = Pattern.compile(passwordRegex);
         Matcher matcher = pattern.matcher(password);
@@ -101,22 +98,22 @@ public class RegisterServlet extends BaseServlet {
     }
 
     private String generateConfirmationCode() {
-        int code = new Random().nextInt(999999); // Generate a random 6-digit code
-        return String.format("%06d", code); // Format to 6 digits
+        int code = new Random().nextInt(999999); 
+        return String.format("%06d", code); 
     }
 
     private void sendConfirmationEmail(String email, String confirmationCode) {
         String subject = "Confirm your account";
         String body = "Your confirmation code is: " + confirmationCode + ". Please enter this code to confirm your account.";
 
-        System.out.println("Attempting to send confirmation email to: " + email); // Debug log
+        System.out.println("Attempting to send confirmation email to: " + email); 
 
         try {
             EmailService.sendEmail(email, subject, body);
-            System.out.println("Email sent successfully to: " + email); // Log success
+            System.out.println("Email sent successfully to: " + email); 
         } catch (Exception e) {
-            System.err.println("Failed to send email to " + email + ": " + e.getMessage()); // Log failure
-            e.printStackTrace(); // Print stack trace for further inspection
+            System.err.println("Failed to send email to " + email + ": " + e.getMessage());
+            e.printStackTrace(); 
         }
     }
 }

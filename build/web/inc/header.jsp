@@ -47,11 +47,15 @@
                             <li class="menu-item position-relative">
                                 <a href="OrderStatusServlet" class="item-link">Order Status<i class=""></i></a> <!-- New Order Status Link -->
                             </li>
-                            <li class="menu-item position-relative">
-                                <a href="#" class="item-link">Pages<i class=""></i></a>
-                            </li>
+                          
                             <li class="menu-item position-relative">
                                 <a href="CartServlet" class="item-link">Cart<i class="i"></i></a>
+                            </li>
+                            <li class="menu-item position-relative">
+                                <a href="AboutServlet" class="item-link">Abount US<i class="i"></i></a>
+                            </li>
+                            <li class="menu-item position-relative">
+                                <a href="ContactServlet" class="item-link">Contact<i class="i"></i></a>
                             </li>
                             <c:if test="${sessionScope.user != null && sessionScope.user.role == 'admin'}">
                                 <li class="menu-item position-relative">
